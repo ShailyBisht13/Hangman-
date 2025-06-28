@@ -1,11 +1,27 @@
-Hangman is a classic word-guessing game developed as a fun and educational project that combines logical thinking, vocabulary skills, and interactive gameplay. In this project, the player tries to guess a hidden word by suggesting letters within a limited number of attempts. Each incorrect guess brings the player closer to "completing" the hangman figure, which symbolizes failure if fully drawn.
-This project demonstrates the use of basic programming concepts such as loops, conditionals, functions, string manipulation, and user interaction. It can be built using Python languages.
-How the Game Works -
-The game randomly selects a word from a predefined list or user-selected category.
-The word is displayed as a series of underscores (_), each representing a letter.
-The player inputs one letter per turn.
-Correct guesses reveal the letter in its correct position(s).
-Incorrect guesses result in a part of the hangman figure being drawn.
-The player wins by guessing the complete word before exceeding the maximum number of wrong guesses.
-The game ends in a loss if the hangman figure is fully drawn without completing the word.
-
+import random
+import hangman_stages
+import word_file
+lives=6
+chosen_word=random.choice(word_file.words)
+display=[]
+for i in range(len(chosen_word)):
+    display +='_'
+print(display)
+game_over=False
+while not game_over:
+    guessed_letter=input("Guess a letter: ").lower()
+    for position in range(len(chosen_word)):
+      letter = chosen_word[position]
+      if letter==guessed_letter:
+        display[position]=guessed_letter
+    print(display)
+    if guessed_letter not in chosen_word:
+        lives -= 1
+        if lives == 0:
+          game_over = True
+          print("You Lose!!")
+          print("Your word is ",chosen_word)
+    if '_' not in display:
+        game_over = True
+        print("You Win!!")
+    print(hangman_stages.stages[lives])
