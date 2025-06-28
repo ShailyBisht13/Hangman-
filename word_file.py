@@ -1,0 +1,1 @@
+words = ["quiz","fizz","buzz","jinx","fuzz","jink","haze","hajj","vex","fox","apex","affix","annex","axel","coccyx","lax","junk","jazz","apple","banana","cat","dog","elephant","beautiful","mango","pink","blue","red"]
